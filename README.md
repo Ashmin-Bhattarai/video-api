@@ -28,10 +28,10 @@ Initial Database Setup
 Before using this API you need to setup a database. This database will be used to store the videos information.  
 To setup the database you need to create **.env** file in root directory and it must contain as below:  
 
-                MYSQL\_HOST = 'localhost'
-                MYSQL\_USER = 'ashmin'  --> username of the database
-                MYSQL\_PASSWORD = 'password' --> password of the database
-                MYSQL\_DB = 'test' --> name of the database
+                MYSQL_HOST = 'localhost'
+                MYSQL_USER = 'ashmin'  --> username of the database
+                MYSQL_PASSWORD = 'password' --> password of the database
+                MYSQL_DB = 'test' --> name of the database
             
 
 Create a datebase **test**  
@@ -43,7 +43,7 @@ To create database in msql prompt run the following command:
 
 Then source dump file by:
 
-                source initial\_dump.sql;
+                source initial_dump.sql;
             
 
 DataBase Info
@@ -86,4 +86,4 @@ To run the API you need to run the following command in root directory :
 Test the API
 ------------
 
-To test the API you can run **client.py** or below forms will also work:
+To test the API you can run **client.py** or in browser goto end of home page:

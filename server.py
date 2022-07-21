@@ -21,7 +21,7 @@ app = Flask(__name__)
 # setting super key for the app
 app.secret_key = 'super secret key'
 
-
+# connecting to the database
 mysql = mysql_conn.config_app(app)
 
 

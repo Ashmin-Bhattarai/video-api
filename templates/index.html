@@ -13,10 +13,10 @@
         This is a simple API created using python flask server. It is used to store and retrieve videos.<br>
         This API contains three endpoints:<br>
         <ul>
-            <li>/</li>
-            <li>/upload</li>
-            <li>/getCost</li>
-            <li>/getVideos</li>
+            <li>http://localhost:5000/</li>
+            <li>http://localhost:5000/upload</li>
+            <li>http://localhost:5000/getCost</li>
+            <li>http://localhost:5000/getVideos</li>
         </ul>
         <b>/</b><br>
         This endpoint is used to render index.html i.e. the current page.<br><br>
@@ -134,7 +134,7 @@
         <label > $</label><br>
 
         <label >Date From :</label>
-        <input type="date" name="date_from" id = "date_from"><br>
+        <input type="date" value = "2020-01-01" name="date_from" id = "date_from"><br>
 
         <label >Date To :</label>
         <input type="date" name="date_to" id = "date_to"><br>
@@ -155,7 +155,7 @@
     }
     today = yyyy+'-'+mm+'-'+dd;
     // alert(today);
-    document.getElementById("date_from").value = today;
+    // document.getElementById("date_from").value = today;
     document.getElementById("date_to").value = today;
 </script>
 

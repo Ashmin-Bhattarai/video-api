@@ -4,10 +4,10 @@ Video Api Docs
 This is a simple API created using python flask server. It is used to store and retrieve videos.  
 This API contains three endpoints:  
 
-*   /
-*   /upload
-*   /getCost
-*   /getVideos
+*   http://localhost:5000/
+*   http://localhost:5000/upload
+*   http://localhost:5000/getCost
+*   http://localhost:5000/getVideos
 
 **/**  
 This endpoint is used to render index.html i.e. the current page.  

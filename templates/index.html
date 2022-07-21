@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Docs</title>
+</head>
+<body>
+
+    <h1>Video Api Docs</h1>
+    <p>
+        This is a simple API created using python flask server. It is used to store and retrieve videos.<br>
+        This API contains three endpoints:<br>
+        <ul>
+            <li>/</li>
+            <li>/upload</li>
+            <li>/getCost</li>
+            <li>/getVideos</li>
+        </ul>
+        <b>/</b><br>
+        This endpoint is used to render index.html i.e. the current page.<br><br>
+        <b>/upload</b><br>
+        This endpoint is used to upload a video. It works on <strong> POST</strong> request method. It takes a file as a parameter, validates wheather file in mp4 or mkv and check size and video length.Once the verification is compleated the is will store video file to upload directory and stores it's name, size, uploaded date, etc in the database.<br><br>
+        <b>/getCost</b><br>
+        This endpoint is used to get the cost of a video. It also works on <strong> POST</strong> request method. It takes a video name as a parameter and returns the cost of the video.<br><br>
+        <b>/getVideos</b><br>
+        This endpoint is used to get all the videos. It works on both <strong> GET </strong> and <strong> POST</strong> request method. If GET method is used the it returns all the videos in the database. If POST method is used it takes a video name as a parameter and returns the video details.<br><br>
+
+        <h2>Initial Database Setup</h2>
+        <p>
+            Before using this API you need to setup a database. This database will be used to store the videos information. <br>
+            To setup the database you need to <font color="red" >  create <strong>.env</strong> file in root directory</font> and it must contain as below:<br>
+            <pre>
+                MYSQL_HOST = 'localhost'
+                MYSQL_USER = 'ashmin'  --> username of the database
+                MYSQL_PASSWORD = 'password' --> password of the database
+                MYSQL_DB = 'test' --> name of the database
+            </pre>
+            Create a datebase <strong>test</strong> <br>To create database in msql prompt run the following command:<br>
+            <pre>
+                CREATE DATABASE test;
+                use test;
+            </pre>
+            Then source dump file by:
+            <pre>
+                source initial_dump.sql;
+            </pre>
+        </p>
+        <h2>DataBase Info</h2>
+        <ul>
+            <li>Database Server : MySQL</li>
+            <li>Database Name : test</li>
+            <li>Table Name : videos</li>
+            <li>Columns :
+                <ul>
+                    <li>id : int primary key auto increament</li>
+                    <li>filename : varchar(255) name of the video</li>
+                    <li>length : int  length of the video</li>
+                    <li>size : int size of the video</li>
+                    <li>cost : float cost of the video</li>
+                    <li>date :datetime default(current timestamp) date of the video upload</li>
+                </ul>
+        </ul>
+
+        <h2>Used Libraries</h2>
+        <ul>
+            <li>flask</li>
+            <li>flask-mysql</li>
+            <li>os</li>
+            <li>time</li>
+            <li>werkzeug</li>
+        </ul>
+        <font color = "Red"><b> Note: </b><br></font>
+        All required Libraries can be installed using <strong> requirement.txt</strong> file by: <br>
+        <pre>
+            pip install -r requirement.txt
+        </pre>
+
+        <h2>Run the API</h2>
+        <p>
+            To run the API you need to run the following command in root directory :<br>
+            <pre>
+                python3 server.py
+            </pre>
+        
+        <h2>Test the API</h2>
+        <p>
+            To test the API you can run <strong>client.py</strong> or below forms will also work:<br>
+    </p>
+
+    <hr>
+    <hr>
+    <h1>Upload Video</h1>
+    <form action="http://localhost:5000/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+
+    <h1>Calculate Video Cost</h1>
+    <form action="http://localhost:5000/getCost" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Calculate">
+    </form>
+
+    <h1>Get Video</h1>
+    <form action="http://localhost:5000/getVideos" method="post">
+        <label >Name :</label>
+        <input type="text" value = "%"  name="filename"><br>
+
+        <label >Length Min :</label>
+        <input type="number" value = 0 name="length_min">
+        <label > Sec</label><br>
+
+        <label >Length Max:</label>
+        <input type="number" value =600   name="length_max">
+        <label > Sec</label><br>
+
+        <label >Size Min :</label>
+        <input type="number" value = 0  name="size_min">
+        <label > Bytes</label><br>
+
+
+        <label >Size Max :</label>
+        <input type="number" value = 1073741824  name="size_max">
+        <label > Bytes</label><br>
+
+        <label >Cost Min :</label>
+        <input type="number" value = 0 step=0.01 name="cost_min">
+        <label > $ </label><br>
+
+        <label >Cost Max :</label>
+        <input type="number" value = 35 step=0.01 name="cost_max">
+        <label > $</label><br>
+
+        <label >Date From :</label>
+        <input type="date" name="date_from" id = "date_from"><br>
+
+        <label >Date To :</label>
+        <input type="date" name="date_to" id = "date_to"><br>
+
+        <input type="submit" value="Submit">
+
+</body>
+<script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd<10) {
+        dd='0'+dd
+    }
+    if(mm<10) {
+        mm='0'+mm
+    }
+    today = yyyy+'-'+mm+'-'+dd;
+    // alert(today);
+    document.getElementById("date_from").value = today;
+    document.getElementById("date_to").value = today;
+</script>
+
+</html>

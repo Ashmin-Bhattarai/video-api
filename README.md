@@ -21,6 +21,42 @@ This endpoint is used to get the cost of a video. It also works on **POST** requ
 **/getVideos**  
 This endpoint is used to get all the videos. It works on both **GET** and **POST** request method. If GET method is used the it returns all the videos in the database. If POST method is used it takes a video name as a parameter and returns the video details.  
   
+Return Format
+-------------
+
+**/upload**
+
+*   If the file is valid it will return a json object with the following keys:  
+    *   response: **true**
+    *   message: **sucess uploading video**
+    *   name: **Name of the video**
+    *   size: **Size of the video**
+    *   length: **Length of video**
+    *   cost: **Cost of the video**
+
+**/getCost**
+
+*   If the video is valid it will return a json object with the following keys:  
+    *   response: **true**
+    *   message: **Cost of video**
+    *   cost: **Cost of the video**
+
+**/getVideos**
+
+*   If the video query is valid it will return a json object with the following keys:  
+    *   cost: **Cost of the video**
+    *   date: **Date of the video uploaded**
+    *   filename: **Name of the video**
+    *   length: **Length of video**
+    *   size: **Size of the video**
+
+In case of error
+----------------
+
+*   All endpoints will return a json object with the following keys:  
+    *   response: **false**
+    *   message: **error message**
+
 
 Initial Database Setup
 ----------------------

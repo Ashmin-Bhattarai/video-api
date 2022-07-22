@@ -26,6 +26,58 @@
         This endpoint is used to get the cost of a video. It also works on <strong> POST</strong> request method. It takes a video name as a parameter and returns the cost of the video.<br><br>
         <b>/getVideos</b><br>
         This endpoint is used to get all the videos. It works on both <strong> GET </strong> and <strong> POST</strong> request method. If GET method is used the it returns all the videos in the database. If POST method is used it takes a video name as a parameter and returns the video details.<br><br>
+        
+        <h2>Return Format</h2>
+        <p>
+            <strong>/upload</strong>
+            <ul>
+                <li>If the file is valid it will return a json object with the following keys:<br>
+                    <ul>
+                        <li>response: <strong>true</strong></li>
+                        <li>message: <strong>sucess uploading video</strong></li>
+                        <li>name: <strong>Name of the video</strong></li>
+                        <li>size: <strong>Size of the video</strong></li>
+                        <li>length: <strong>Length of video</strong></li>
+                        <li>cost: <strong>Cost of the video</strong></li>
+                    </ul>
+                </li>
+            </ul>
+            <strong>/getCost</strong>
+            <ul>
+                <li>If the video is valid it will return a json object with the following keys:<br>
+                    <ul>
+                        <li>response: <strong>true</strong></li>
+                        <li>message: <strong>Cost of video</strong></li>
+                        <li>cost: <strong>Cost of the video</strong></li>
+                    </ul>
+                </li>
+            </ul>
+            <strong>/getVideos</strong>
+            <ul>
+                <li>If the video query is valid it will return a json object with the following keys:<br>
+                    <ul>
+                        <li>cost: <strong>Cost of the video</strong></li>
+                        <li>date: <strong>Date of the video uploaded</strong></li>
+                        <li>filename: <strong>Name of the video</strong></li>
+                        <li>length: <strong>Length of video</strong></li>
+                        <li>size: <strong>Size of the video</strong></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </p>
+        <p>
+            <h2>In case of error</h2>
+            <ul>
+                <li>
+                    All endpoints will return a json object with the following keys:<br>
+                    <ul>
+                        <li>response: <strong>false</strong></li>
+                        <li>message: <strong>error message</strong></li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
 
         <h2>Initial Database Setup</h2>
         <p>
